@@ -1,8 +1,8 @@
 class AgentProgress < Formula
   desc "Live progress for long-running agent tasks, in the macOS menu bar"
   homepage "https://github.com/hadronomy/skills"
-  url "https://github.com/hadronomy/skills/archive/refs/tags/agent-progress-v0.1.0.tar.gz"
-  sha256 "3cb28fa89192c57c01673face02feceaff771b26a8d2fffddfadc7125358ca05"
+  url "https://github.com/hadronomy/skills/archive/refs/tags/agent-progress-v0.2.0.tar.gz"
+  sha256 "9bfcf99e5bf1dc980c29bab9d6be09bbd7a61726a8fc5dc198f2aec63e0cc176"
   license "MIT"
   head "https://github.com/hadronomy/skills.git", branch: "main"
 
@@ -28,7 +28,7 @@ class AgentProgress < Formula
 
       system "swiftc", "-O", "-o", app/"Contents/MacOS/AgentProgress",
              "menubar/Shaders.swift", "menubar/AgentProgress.swift", "menubar/Entry.swift",
-             "-framework", "AppKit", "-framework", "MetalKit", "-framework", "SwiftUI"
+             "-framework", "AppKit", "-framework", "MetalKit"
 
       # NSStatusItem needs a real bundle. A bare executable runs but never
       # appears in the menu bar, so the Info.plist is load-bearing, not decoration.
