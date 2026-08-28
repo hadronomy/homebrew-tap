@@ -6,6 +6,15 @@ class AgentProgress < Formula
   license "MIT"
   head "https://github.com/hadronomy/skills.git", branch: "main"
 
+  # The source repo holds several tools, so each carries its own tag prefix.
+  # Without this, `brew bump` and the autobump workflow cannot tell which tags
+  # belong to this formula.
+  livecheck do
+    url :stable
+    strategy :git
+    regex(/^agent-progress[._-]v?(\d+(?:\.\d+)+)$/i)
+  end
+
   # Built from source on the installing machine, which is what keeps this
   # free of code-signing: a locally compiled binary is never quarantined, so
   # Gatekeeper has nothing to block and notarization is not needed.
